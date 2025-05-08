@@ -16,21 +16,50 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+   check-tools:
+      runs-on: ubuntu-latest
+  
+      steps:
+        - name: Print OS Info
+          run: |
+            echo "OS Version:"
+            lsb_release -a
+            uname -a
+  
+        - name: Check Git Version
+          run: git --version
+  
+        - name: Check Node.js and npm
+          run: |
+            node -v
+            npm -v
+  
+        - name: Check Python Versions
+          run: |
+            python3 --version
+            python3 -m pip --version
+  
+        - name: Check Java Versions
+          run: |
+            java -version
+            javac -version
+  
+        - name: Check Docker
+          run: |
+            docker --version
+            docker compose version || docker-compose --version
+  
+        - name: Check Terraform
+          run: terraform -version
+  
+        - name: Check kubectl & Helm
+          run: |
+            kubectl version --client
+            helm version
+  
+        - name: Check AWS CLI
+          run: aws --version
+  
+        - name: Check GitHub CLI
+          run: gh --version
+    
