@@ -20,7 +20,7 @@ jobs:
       runs-on: ubuntu-latest
   
       steps:
-        - name: Print OS Info
+        - name: Print OS Info for me
           run: |
             echo "OS Version:"
             lsb_release -a
