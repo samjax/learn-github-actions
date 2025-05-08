@@ -59,4 +59,9 @@ jobs:
   
         - name: Check GitHub CLI
           run: gh --version
+
+        - name: print today's date
+          run: |
+            echo "Today's date is $(date)"
+            echo "Today's date is $(date +%Y-%m-%d)"
     
